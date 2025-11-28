@@ -14,13 +14,26 @@ class Ellipse extends Shape {
 
   @Override
   public Rectangle boundingBox() {
-    // replace the return null with your code!
-    return null;
+    Point bl = new Point(center.x - rx, center.y - ry);
+    return new Rectangle(bl, 2 * rx, 2 * ry);
   }
 
   @Override
   public boolean belongs(Point p) {
-    // replace the return null with your code!
-    return true;
+    double dx = p.x - center.x;
+    double dy = p.y - center.y;
+    double termX = 0;
+    double termY = 0;
+    if (rx == 0) {
+        if (Math.abs(dx) > 0) return false;
+    } else {
+        termX = (dx * dx) / (rx * rx);
+    }
+    if (ry == 0) {
+        if (Math.abs(dy) > 0) return false;
+    } else {
+        termY = (dy * dy) / (ry * ry);
+    }
+    return termX + termY <= 1.0;
   }
 }

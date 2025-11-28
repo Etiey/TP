@@ -28,13 +28,12 @@ class Rectangle extends Shape {
 
   @Override
   public Rectangle boundingBox() {
-    // replace the return null with your code!
-    return null;
+    return this;
   }
 
   @Override
   public boolean belongs(Point p) {
-    // replace the return true with your code!
-    return true;
+    return p.x >= bottomLeft.x && p.x <= bottomLeft.x + width 
+        && p.y >= bottomLeft.y && p.y <= bottomLeft.y + height;
   }
 }
